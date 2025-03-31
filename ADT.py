@@ -18,7 +18,7 @@ class LinkedList:
         string = ""
         while current_node is not None:
             string += str(current_node.data) + " -> "
-            current_node = current_node.next_node
+            current_node = current_node.next
         string += str(current_node)
         return string
 
@@ -27,18 +27,18 @@ class LinkedList:
         if self.head is None:
             self.head = Node(next_data)
             return
-        while current_node.next_node is not None:
-            current_node = current_node.next_node
-        current_node.next_node = Node(next_data)
+        while current_node.next is not None:
+            current_node = current_node.next
+        current_node.next = Node(next_data)
 
     def pop(self):
         current_node = self.head
         prev_node = None
-        while current_node.next_node is not None:
+        while current_node.next is not None:
             prev_node = current_node
-            current_node = current_node.next_node
+            current_node = current_node.next
         if prev_node is not None:
-            prev_node.next_node = None
+            prev_node.next = None
         else:
             self.head = None
         return current_node.data
@@ -49,5 +49,5 @@ class LinkedList:
         while current_node is not None:
             if current_node.data == value:
                 return i
-            current_node = current_node.next_node
+            current_node = current_node.next
             i += 1
